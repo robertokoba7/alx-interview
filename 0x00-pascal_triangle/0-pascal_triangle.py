@@ -4,7 +4,7 @@ The concept tests a triangular array of binomial coefficient"""
 
 
 def pascal_triangle(n):
-    """ returns a list of lists of integers representing the Pascal’s triangle of n.
+    """ returns a list of lists of integers.
     """
     if not isinstance(n, int):
         raise TypeError("n must be an integer")
