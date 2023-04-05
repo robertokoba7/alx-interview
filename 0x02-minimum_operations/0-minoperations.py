@@ -1,30 +1,30 @@
 #!/usr/bin/python3
 import math
 
-def minOPerations(n):
+def minOPerations(self, n):
     """
     Given:
-        number: n
+        Current number: n
         Returns: minimum number of operations
                 Otherwise 0, if impossible to generate n H char
     """
-    # Initialize the dynamic programming array with a high value for all elems
-    lst = [math.inf] * (n+1)
+    # Initialize the variables current, count, buffer1 to run dynamic programming
+    current = 1;
+    count = 0;
+    buffer1 = 0;
+    # when current is less than n we return the remaining number of times H occur
+    while current < n:
+        rest = n - current
 
-    # Base case:it takes 0 operations to generate 1 H character
-    lst[1] = 0
+        # Check if we can generate a sequence of H char
+        if(rest % current == 0):
+            buffer1 = current
+            current += buffer1
+            count += 2
 
-    # Iterate over every possible values of num1, from 2 to n
-    for num1 in range(2, n+1):
-        # iterate over all possible value of num2, from 1 to (num2-1)
-        for num2 in range(1, num2):
-            # Check if num2 can generate a sequence of H char
-            if num1 % num2 == 0:
-                # Calc the number of operations required to generate num2 H char that can be pasted to generate num1 H characters)
-                lst[num1] = min(lst[num1], lst[num2] + (num1 // num2))
-
-    # if impossible to generate n H char return 0
-    if lst[n] == math.inf:
-        return 0
+        else:
+            current += buffer1
+            count +=1
+        
     # Otherwise, return mininumber of operations
-    return lst[n]
+    return count
