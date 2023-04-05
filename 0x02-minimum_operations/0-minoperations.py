@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """
-2 key keyboard interview problem
+This is a 2 key keyboard problem.
 """
 
 
-def minOperations(self, n):
+def minOperations(n):
     """
     Given:
         Current number: n
@@ -15,10 +15,9 @@ def minOperations(self, n):
     current = 1
     count = 0
     buffer1 = 0
-    # when current is less than n we return the remaining number of times H
-    # occur
+    # when current is less than n we return the remaining number of times H.
     while current < n:
-        rest = n - current # 
+        rest = n - current 
 
         # Check if we can generate a sequence of H char
         if(rest % current == 0):
@@ -30,5 +29,8 @@ def minOperations(self, n):
             current += buffer1
             count += 1
 
-    # Otherwise, return mininumber of operations
-    return count
+    # Otherwise, return minimum number of operations
+    if current == n:
+        return count
+    else:
+        return 0
