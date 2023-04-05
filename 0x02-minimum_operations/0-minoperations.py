@@ -2,6 +2,8 @@
 """
 2 key keyboard interview problem
 """
+
+
 def minOperations(self, n):
     """
     Given:
