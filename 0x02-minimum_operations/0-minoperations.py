@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import math
 
+
 def minOPerations(self, n):
     """
     Given:
@@ -8,11 +9,13 @@ def minOPerations(self, n):
         Returns: minimum number of operations
                 Otherwise 0, if impossible to generate n H char
     """
-    # Initialize the variables current, count, buffer1 to run dynamic programming
-    current = 1;
-    count = 0;
-    buffer1 = 0;
-    # when current is less than n we return the remaining number of times H occur
+    # Initialize the variables current, count, buffer1 to run dynamic
+    # programming
+    current = 1
+    count = 0
+    buffer1 = 0
+    # when current is less than n we return the remaining number of times H
+    # occur
     while current < n:
         rest = n - current
 
@@ -24,7 +27,7 @@ def minOPerations(self, n):
 
         else:
             current += buffer1
-            count +=1
-        
+            count += 1
+
     # Otherwise, return mininumber of operations
     return count
