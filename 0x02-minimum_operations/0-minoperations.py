@@ -17,7 +17,7 @@ def minOperations(n):
     buffer1 = 0
     # when current is less than n we return the remaining number of times H.
     while current < n:
-        rest = n - current 
+        rest = n - current
 
         # Check if we can generate a sequence of H char
         if(rest % current == 0):
