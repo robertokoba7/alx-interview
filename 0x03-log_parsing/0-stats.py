@@ -11,7 +11,15 @@ def log_parsing(status_code_counts, total_file_size):
             print("{}: {}".format(key, status_code_counts[key]))
 
 
-status_code_counts = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+status_code_counts = {
+    200: 0,
+    301: 0,
+    400: 0,
+    401: 0,
+    403: 0,
+    404: 0,
+    405: 0,
+    500: 0}
 
 total_file_size = 0
 line_count = 0
@@ -24,13 +32,12 @@ try:
         if line_count != 0 and line_count % 10 == 0:
             log_parsing(status_code_counts, total_file_size)
 
-
         elem = line.split(" ")
         line_count += 1
 
         try:
             file_size += int(elem[-1])
-        except:
+        except BaseException:
             pass
 
         try:
