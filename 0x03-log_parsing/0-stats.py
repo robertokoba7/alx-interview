@@ -20,11 +20,14 @@ status_code_counts = {
     403: 0,
     404: 0,
     405: 0,
-    500: 0}
+    500: 0
+    }
+
 
 total_file_size = 0
 line_count = 0
 file_size = 0
+
 
 try:
     # Read input data from stdin
@@ -32,6 +35,7 @@ try:
         # Parse input line when matching the expected format
         if line_count != 0 and line_count % 10 == 0:
             log_parsing(status_code_counts, total_file_size)
+
 
         elem = line.split(" ")
         line_count += 1
@@ -48,6 +52,7 @@ try:
         except IndexError:
             pass
     log_parsing(status_code_counts, total_file_size)
+
 
 except KeyboardInterrupt:
     log_parsing(status_code_counts, total_file_size)
