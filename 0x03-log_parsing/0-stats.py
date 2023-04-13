@@ -11,7 +11,7 @@ status_code_counts = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 50
 for line in sys.stdin:
     # Parse input line when matching the expected format
     try:
-        ip_address, _, _, _, timestamp, _, request, status_code, file_size = line.split().split()
+        ip_address, _, _, _, timestamp, _, request, status_code, file_size = line.strip().split()
     except ValueError:
         # Skip line if it unmatched the format expected
         continue
@@ -31,5 +31,5 @@ for line in sys.stdin:
             print(f"File size:, {total_file_size}")
             for code, count in sorted(status_code_counts.items()):
                 if count > 0:
-                print(f"{code}, {count}")
+                    print(f"{code}, {count}")
             print()
