@@ -3,18 +3,19 @@
 import sys
 
 
-def log_parsing(dict, size):
-    """log the format"""
-    print("size of file: {}".format(size))
-    for key in sorted(dict.key()):
-        if dict[key] != 0:
-            print("{}: {}".format(key, dict[key]))
+def log_parsing(status_code_counts, total_file_size):
+    """print log parsing results"""
+    print("Total size of file: {}".format(total_file_size))
+    for key in sorted(status_code_counts.keys()):
+        if status_code_counts[key] != 0:
+            print("{}: {}".format(key, status_code_counts[key]))
 
 
 status_code_counts = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 
 total_file_size = 0
 line_count = 0
+file_size = 0
 
 try:
     # Read input data from stdin
@@ -28,14 +29,15 @@ try:
         line_count += 1
 
         try:
-            file_size += int(elem[1-])
+            file_size += int(elem[-1])
         except:
             pass
 
         try:
-            if elem[-2] in status_code_counts.keys():
-                status_code_counts[elem[-2]] += 1
-        except:
+            status_code = int(elem[-2])
+            if status_code in status_code_counts.keys():
+                status_code_counts[status_code] += 1
+        except IndexError:
             pass
     log_parsing(status_code_counts, total_file_size)
 
