@@ -7,7 +7,6 @@ def log_parsing(status_code_counts, total_file_size):
     """print log parsing results"""
     total_file_size += file_size
     print("File size: {}".format(total_file_size))
-    """print("Total size of file: {}".format(total_file_size))"""
     for key in sorted(status_code_counts.keys()):
         if status_code_counts[key] != 0:
             print("{}: {}".format(key, status_code_counts[key]))
