@@ -11,6 +11,7 @@ def log_parsing(status_code_counts, total_file_size):
         if status_code_counts[key] != 0:
             print("{}: {}".format(key, status_code_counts[key]))
 
+
 status_code_counts = {
     200: 0,
     301: 0,
