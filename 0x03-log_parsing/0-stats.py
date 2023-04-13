@@ -11,7 +11,6 @@ def log_parsing(status_code_counts, total_file_size):
         if status_code_counts[key] != 0:
             print("{}: {}".format(key, status_code_counts[key]))
 
-
 status_code_counts = {
     200: 0,
     301: 0,
@@ -22,11 +21,9 @@ status_code_counts = {
     405: 0,
     500: 0}
 
-
 total_file_size = 0
 line_count = 0
 file_size = 0
-
 
 try:
     # Read input data from stdin
@@ -34,7 +31,6 @@ try:
         # Parse input line when matching the expected format
         if line_count != 0 and line_count % 10 == 0:
             log_parsing(status_code_counts, total_file_size)
-
 
         elem = line.split(" ")
         line_count += 1
