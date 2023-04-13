@@ -20,8 +20,7 @@ status_code_counts = {
     403: 0,
     404: 0,
     405: 0,
-    500: 0
-    }
+    500: 0}
 
 
 total_file_size = 0
