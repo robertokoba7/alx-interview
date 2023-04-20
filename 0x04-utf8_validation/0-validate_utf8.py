@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def validUTF8(data):
     """method to validate UTF8"""
     numbytes = 0
@@ -18,7 +19,7 @@ def validUTF8(data):
             if numbytes == 1 or numbytes > 4:
                 return False
         else:
-            if not ( & first_byte and not (fb & second_byte)):
+            if not (& first_byte and not (fb & second_byte)):
                 return False
         numbytes -= 1
     return numbytes == 0
