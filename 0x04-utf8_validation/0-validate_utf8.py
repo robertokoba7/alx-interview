@@ -1,30 +1,24 @@
 #!/usr/bin/python3
 
 def validUTF8(data):
-    # count tracks how many more continuation bytes are expected
-    count = 0
-    
-    for byte in data:
-        if count == 0:
-            # Check if the byte is a single byte character (i.e., starts with a 0)
-            if (byte >> 7) == 0b0:
+    """method to validate UTF8"""
+    numbytes = 0
+
+    first_byte = 1 << 7
+    second_byte = 1 << 6
+
+    for num in data:
+        fb = 1 << 7
+        if numbytes == 0:
+            while fb & num:
+                numbytes += 1
+                fb = fb >> 1
+            if numbytes == 0:
                 continue
-            # Check if the byte starts a multi-byte character
-            elif (byte >> 5) == 0b110:
-                count = 1
-            elif (byte >> 4) == 0b1110:
-                count = 2
-            elif (byte >> 3) == 0b11110:
-                count = 3
-            else:
-                # Invalid UTF-8 byte sequence
+            if numbytes == 1 or numbytes > 4:
                 return False
         else:
-            # Check if the byte is a continuation byte (i.e., starts with 10)
-            if (byte >> 6) != 0b10:
+            if not ( & first_byte and not (fb & second_byte)):
                 return False
-            count -= 1
-    
-    # If there are still expected continuation bytes, it means the data set is incomplete
-    return count == 0
-
+        numbytes -= 1
+    return numbytes == 0
