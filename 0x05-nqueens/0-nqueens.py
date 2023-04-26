@@ -4,10 +4,12 @@ BACKTRACKING ALGORITHM IN SOLVING N-QUEENS.
 """
 import sys
 
+
 class NQueens:
     """
-    Implementation of nqueen 
+    Implementation of nqueen
     """
+
     def __init__(self, N):
         self.N = N
         self.board = [['.' for _ in range(N)] for _ in range(N)]
@@ -19,12 +21,12 @@ class NQueens:
                 return False
 
         # Check if there is a queen in the upper-left diagonal
-        for i, j in zip(range(row-1, -1, -1), range(col-1, -1, -1)):
+        for i, j in zip(range(row - 1, -1, -1), range(col - 1, -1, -1)):
             if self.board[i][j] == 'Q':
                 return False
 
         # Check if there is a queen in the upper-right diagonal
-        for i, j in zip(range(row-1, -1, -1), range(col+1, self.N)):
+        for i, j in zip(range(row - 1, -1, -1), range(col + 1, self.N)):
             if self.board[i][j] == 'Q':
                 return False
 
@@ -40,7 +42,7 @@ class NQueens:
         for col in range(self.N):
             if self.is_safe(row, col):
                 self.board[row][col] = 'Q'
-                if self.place_queen(row+1):
+                if self.place_queen(row + 1):
                     return True
                 self.board[row][col] = '.'
 
@@ -54,6 +56,7 @@ class NQueens:
                 print(' '.join(row))
         else:
             print('No solutions found.')
+
 
 if __name__ == '__main__':
     # Parse the command-line argument N
